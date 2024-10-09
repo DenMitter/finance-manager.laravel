@@ -17,9 +17,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', IndexController::class)->name('home');
-Route::post('card', [CardController::class, 'store'])->name('card.store');
-
-Auth::routes();
-
-Route::get('/home', [HomeController::class, 'index']);
+Route::get('/', function () {
+    abort(404);
+});
