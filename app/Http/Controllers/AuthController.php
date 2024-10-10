@@ -50,4 +50,21 @@ class AuthController extends Controller
             ], 400);
         }
     }
+
+    public function logout()
+    {
+        try {
+            $this->authService->logout();
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Logged out'
+            ]);
+        } catch (Exception $exception) {
+            return response()->json([
+                'success' => false,
+                'message' => $exception->getMessage()
+            ], 400);
+        }
+    }
 }

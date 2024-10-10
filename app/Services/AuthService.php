@@ -32,4 +32,10 @@ class AuthService {
 
         return $user->createToken('token')->plainTextToken;
     }
+
+    public static function logout(): void
+    {
+        $user = auth()->user();
+        $user->tokens()->delete();
+    }
 }
