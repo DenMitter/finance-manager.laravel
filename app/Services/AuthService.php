@@ -33,9 +33,16 @@ class AuthService {
         return $user->createToken('token')->plainTextToken;
     }
 
+    /**
+     * @throws Exception
+     */
     public static function logout(): void
     {
         $user = auth()->user();
-        $user->tokens()->delete();
+        if ($user) {
+            $user->tokens()->delete();
+        } else {
+            throw new Exception('User is not authenticated');
+        }
     }
 }
