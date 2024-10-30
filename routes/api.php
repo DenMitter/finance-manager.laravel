@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +21,5 @@ Route::post('auth/logout', [AuthController::class, 'logout']);
 Route::post('auth/forgot-password', [AuthController::class, 'sendResetLinkEmail'])->middleware('guest')->name('password.email');
 Route::get('auth/reset-password/{token}', [AuthController::class, 'resetPassword'])->middleware('guest')->name('password.reset');
 Route::post('auth/reset-password', [AuthController::class, 'updatePassword'])->middleware('guest')->name('password.update');
+
+Route::apiResource('cards', CardController::class);
